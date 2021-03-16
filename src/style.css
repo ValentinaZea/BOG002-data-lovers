@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121830;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1c1b43;
+  height: 3em;
+}
+
+button {
+  font-family: "Indie Flower", cursive;
+  background-color: #1c1b43;
+  border: none;
+  color: aliceblue;
+  font-size: 1.5em;
+}
+
+footer {
+  text-align: center;
+  color: #d2da4b;
+  font-size: 1.5em;
+  font-family: "Indie Flower", cursive;
+}
+
+.card {
+  font-family: "Ravi Prakash", cursive;
+  display: flex;
+  flex-direction: column;
+  background-color: #16acc9;
+  border: solid 5px #d2da4b;
+
+}
