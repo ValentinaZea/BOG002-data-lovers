@@ -1,22 +1,15 @@
 // import { example } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
 
-let nombre = document.getElementById("prueba");
+let root = document.getElementById("root");
 
 for (let i = 0; i < data.results.length; i++) {
-  //   console.log(data.results[i]["id"]);
-  //   console.log(data.results[i]["name"]);
-  // nombre.innerHTML += `nombre:${data.results[i]["image"]}<br>`;
-    var newDiv = document.createElement('div');
-    // document.getElementsByClassName('character-card');
-    var img = document.createElement('img'); 
-    img.src = data.results[i]["image"];
-    var name = document.createTextNode(data.results[i]["name"]); 
-    newDiv.appendChild(img); 
-    newDiv.appendChild(name);
-    document.getElementById("root").appendChild(newDiv);
-
-}
-
-console.log(data);
-console.log(data.results[0]);
+  let name = data.results[i]["name"];
+  let image = data.results[i]["image"];
+  let newDiv = document.createElement("div");
+  let myImage = new Image(200, 200);
+  myImage.src = image;
+  newDiv.insertAdjacentHTML("beforeend", name); 
+  newDiv.insertAdjacentElement("afterbegin", myImage);
+  root.appendChild(newDiv);
+  }
