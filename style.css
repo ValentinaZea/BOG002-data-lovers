@@ -29,17 +29,25 @@ footer {
   font-size: 1.5em;
   font-family: "Indie Flower", cursive;
 }
+
+.row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .name {
   font-size: 2vw;
   text-align: center;
 }
 
 .image {
-  object-fit: contain;
+  width: 100%;
 }
 
 .card {
   display: block;
+  flex:1;
   font-family: "Ravi Prakash", cursive;
   background-color: #16acc9;
   border: solid 0.3em #d2da4b;
