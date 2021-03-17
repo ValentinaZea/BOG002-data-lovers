@@ -9,11 +9,15 @@ btnCharacter.addEventListener("click", () => {
     let name = data.results[i]["name"];
     let image = data.results[i]["image"];
     let newDiv = document.createElement("div");
-    let myImage = new Image(200, 200);
+    let myImage = document.createElement("img");
     myImage.src = image;
-    newDiv.insertAdjacentHTML("beforeend", name);
+    let nombre = document.createElement("h3");
+    nombre.innerText = name;
+    newDiv.insertAdjacentElement("beforeend", nombre);
     newDiv.insertAdjacentElement("afterbegin", myImage);
     root.appendChild(newDiv);
     newDiv.classList.add("card");
+    nombre.classList.add("name");
+    myImage.classList.add("image")
   }
 });

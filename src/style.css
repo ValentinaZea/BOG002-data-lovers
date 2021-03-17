@@ -29,16 +29,44 @@ footer {
   font-size: 1.5em;
   font-family: "Indie Flower", cursive;
 }
-
-.card {
-  font-family: "Ravi Prakash", cursive;
-  display: inline-flex;
-  flex-direction: column;
-  background-color: #16acc9;
-  border: solid 0.5em #d2da4b;
-  margin: 1em;
+.name {
+  font-size: 2vw;
   text-align: center;
-
 }
 
+.image {
+  object-fit: contain;
+}
 
+.card {
+  display: block;
+  font-family: "Ravi Prakash", cursive;
+  background-color: #16acc9;
+  border: solid 0.3em #d2da4b;
+  border-radius: 2mm;
+  margin: 1em;
+  width: 250px;
+  height: 340px;
+}
+
+.wrapper {
+}
+/* 
+.wrapper{
+ 
+  max-width: 960px;
+  margin: 2em auto;
+  column-count: 3;
+}
+
+@media screen and (min-width: 600px) {
+  .wrapper {
+    display: flex;
+  }
+
+  .card {
+    flex: 1;
+    margin-right: 5%;
+  }
+
+} */
