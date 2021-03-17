@@ -32,9 +32,13 @@ footer {
 
 .card {
   font-family: "Ravi Prakash", cursive;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   background-color: #16acc9;
-  border: solid 5px #d2da4b;
+  border: solid 0.5em #d2da4b;
+  margin: 1em;
+  text-align: center;
 
 }
+
+
