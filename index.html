@@ -4,30 +4,37 @@
     <meta charset="utf-8" />
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Ravi+Prakash&display=swap');
-      </style>
+      @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Ravi+Prakash&display=swap");
+    </style>
   </head>
   <body>
-    <header><img src="img/image (1).jpg" style="width: 100%"/></header>
+    <header>
+      <picture>
+        <source srcset="img/header_mobile.jpg" media="(max-width: 1280px)" />
+        <source srcset="img/header_desktop.jpg" />
+        <img src="img/header_desktop.jpg" style="width: 100%" />
+      </picture>
+    </header>
     <nav class="menu">
-      <button>Home</button>
-       <button id="btn-character">Personajes</button>
-        <button>Episodios</button>
-       <button>Ubicaciones</button>
+      <i class="material-icons" id="menu-icon">menu</i>
+      <ul id="list-menu">
+        <li class="menuItem">Home</li>
+        <li class="menuItem" id="btn-character">Personajes</li>
+        <li class="menuItem">Episodios</li>
+        <li class="menuItem">Ubicaciones</li>
       </ul>
     </nav>
     <main>
-      <section >
-        <div id="root" class="wrapper">
-          <!-- <div class="list" id="list"></div> -->
-        </div>
+      <section>
+        <div id="root" class="wrapper"></div>
         <div class="pagenumbers" id="pagination"></div>
       </section>
     </main>
     <footer>
-      <hr>
+      <hr />
       @Copyrigt.All rights reserved.
     </footer>
     <script src="main.js" type="module"></script>
