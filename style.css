@@ -30,14 +30,8 @@ footer {
   font-family: "Indie Flower", cursive;
 }
 
-.row{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
 .name {
-  font-size: 2vw;
+  font-size: 1.5rem;
   text-align: center;
 }
 
@@ -46,35 +40,40 @@ footer {
 }
 
 .card {
-  display: block;
-  flex:1;
   font-family: "Ravi Prakash", cursive;
   background-color: #16acc9;
   border: solid 0.3em #d2da4b;
   border-radius: 2mm;
-  margin: 1em;
-  width: 250px;
-  height: 340px;
+  margin: 0 1rem 1rem 0;
+  width: calc(100% - 1rem);
 }
 
 .wrapper {
-}
-/* 
-.wrapper{
- 
-  max-width: 960px;
-  margin: 2em auto;
-  column-count: 3;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 80%;
+  margin: 4rem auto;
+  transform: translateX(0.5rem);
 }
 
-@media screen and (min-width: 600px) {
-  .wrapper {
-    display: flex;
-  }
+@media screen and (min-width: 220px) {
+  .wrapper{
+    grid-template-columns: repeat(1, 1fr);
 
-  .card {
-    flex: 1;
-    margin-right: 5%;
   }
+}
 
-} */
+@media screen and (min-width: 568px) {
+  .wrapper{
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}
+
+
+@media screen and (min-width: 998px) {
+  .wrapper{
+    grid-template-columns: repeat(4, 1fr);
+
+  }
+}
