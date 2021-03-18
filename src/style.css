@@ -10,17 +10,25 @@ body {
 
 nav {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
   background-color: #1c1b43;
   height: 3em;
 }
-
-button {
-  font-family: "Indie Flower", cursive;
+ul {
+  display: none;
+  width: 100%;
+  padding: 0.5em;
+  text-align: center;
   background-color: #1c1b43;
-  border: none;
-  color: aliceblue;
-  font-size: 1.5em;
+  color: #f3e4e4;
+  font-family: "Indie Flower", cursive;
+}
+
+.menuItem:hover {
+  background-color: rgb(255, 250, 250);
+  color: #666666;
+  border-radius: 10px;
 }
 
 footer {
@@ -35,7 +43,14 @@ footer {
   text-align: center;
 }
 
-.image {
+#menu-icon {
+  background-color: #1c1b43;
+  text-align: right;
+  width: 100%;
+  color: white;
+}
+
+.image{
   width: 100%;
 }
 
@@ -44,7 +59,8 @@ footer {
   background-color: #16acc9;
   border: solid 0.3em #d2da4b;
   border-radius: 2mm;
-  margin: 0 1rem 1rem 0;
+  margin-top: 1rem;
+  grid-gap: 1rem;
   width: calc(100% - 1rem);
 }
 
@@ -56,24 +72,54 @@ footer {
   transform: translateX(0.5rem);
 }
 
-@media screen and (min-width: 220px) {
-  .wrapper{
-    grid-template-columns: repeat(1, 1fr);
-
-  }
+.pagenumbers {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-gap: 0.8rem;
+  width: 80%;
+  margin: 4rem auto;
 }
 
-@media screen and (min-width: 568px) {
-  .wrapper{
+.pagenumbers button {
+  background-color: #16acc9;
+  height: 50px;
+  font-family: "Ravi Prakash", cursive;
+  font-size: 2rem;
+}
+
+.pagenumbers button.active {
+  background-color: #d2da4b;
+}
+
+@media screen and (max-width: 640px) {
+  .wrapper {
     grid-template-columns: repeat(2, 1fr);
-
+  }
+  .pagenumbers {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
+@media screen and (min-width: 640px) and (max-width: 1280px) {
+  .wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pagenumbers {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
 
-@media screen and (min-width: 998px) {
-  .wrapper{
+@media screen and (min-width: 1280px) {
+  .wrapper {
     grid-template-columns: repeat(4, 1fr);
-
+  }
+  #menu-icon {
+    display: none;
+  }
+  ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    font-size: 2rem;
   }
 }
