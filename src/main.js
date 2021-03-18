@@ -1,7 +1,6 @@
 // import { example } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
 
-const root = document.getElementById("root");
 const btnCharacter = document.getElementById("btn-character");
 const list_element = document.getElementById('root');
 const pagination_element = document.getElementById('pagination');
@@ -20,7 +19,6 @@ function displayList(items, wrapper, rows_per_page, page){
 
   for(let i= 0; i < paginatedItems.length; i++){
 
-    let item = paginatedItems[i];
     let name = paginatedItems[i]["name"];
     let image = paginatedItems[i]["image"];
     
