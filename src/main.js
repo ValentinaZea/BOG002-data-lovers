@@ -4,10 +4,21 @@ import data from "./data/rickandmorty/rickandmorty.js";
 const btnCharacter = document.getElementById("btn-character");
 const listElement = document.getElementById("root");
 const paginationElement = document.getElementById("pagination");
-const menuIcon = document.getElementById("menu-icon");
-const listMenu = document.getElementById("list-menu");
+const menuIcon = document.querySelector("#menu-icon");
+const listMenu = document.querySelector("#list-menu");
 let currentPage = 1;
 let rows = 32;
+
+//menu
+menuIcon.addEventListener("click", () => {
+  listMenu.classList.toggle("toggle");
+});
+
+listMenu.addEventListener("click", (event) => {
+  if(event.target.classList.contains("menuItem")){
+    listMenu.classList.toggle("toggle");
+  }
+});
 
 //seccion de paginacion
 function displayList(items, wrapper, rowsPerPage, page) {
@@ -56,19 +67,7 @@ function paginationButton(page, items) {
   return button;
 }
 
-function hideMenu() {
-  let width = window.innerWidth > 0 ? window.innerWidth : screen.width;
-  if (width < 1280) {
-    listMenu.style.display = "none";
-  }
-}
-
 btnCharacter.addEventListener("click", () => {
   displayList(data.results, listElement, rows, currentPage);
   setPagination(data.results, paginationElement, rows);
-  hideMenu();
-});
-
-menuIcon.addEventListener("click", () => {
-  listMenu.style.display = "block";
 });
