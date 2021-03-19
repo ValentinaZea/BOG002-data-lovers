@@ -22,7 +22,6 @@ nav {
 ul {
   margin: 0;
   list-style-type: none;
-  margin: 0;
   list-style-type: none;
   padding-left: 0;
   display: flex;
@@ -62,10 +61,12 @@ footer {
   background-color: #1c1b43;
   color: white;
   cursor: pointer;
+  font-size: 4rem;
 }
+
 .toggle {
   transform: translateX(0);
-  }
+}
 
 .image {
   width: 100%;
@@ -117,6 +118,10 @@ footer {
   .pagenumbers {
     grid-template-columns: repeat(5, 1fr);
   }
+  .menuItem{
+    height: 4rem;
+    font-size: 2.5rem;
+  }
 }
 
 @media screen and (min-width: 640px) and (max-width: 1280px) {
@@ -125,6 +130,10 @@ footer {
   }
   .pagenumbers {
     grid-template-columns: repeat(8, 1fr);
+  }
+  .menuItem{
+    height: 4rem;
+    font-size: 2.5rem;
   }
  
 }
@@ -147,6 +156,6 @@ footer {
   #menu-icon{
     display: none;
   }
-  }
+}
 
 
