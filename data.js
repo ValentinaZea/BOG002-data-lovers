@@ -1,9 +1,18 @@
 // estas funciones son de ejemplo
 
 export const example = () => {
-  return 'example';
+  return "example";
 };
 
 export const anotherExample = () => {
-  return 'OMG';
+  return "OMG";
+};
+
+export const searchByName = (dataOriginal, input) => {
+  let characterFound = [];
+  dataOriginal.forEach((element) => {
+    if (element.name.toLowerCase().includes(input))
+      characterFound.push(element);
+  });
+  return characterFound;
 };

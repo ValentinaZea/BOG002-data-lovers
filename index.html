@@ -6,7 +6,10 @@
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Ravi+Prakash&display=swap");
     </style>
@@ -19,7 +22,7 @@
         <img src="img/header_desktop.jpg" style="width: 100%; display: block" />
       </picture>
     </header>
-    <nav class="menu">      
+    <nav class="menu">
       <ul id="list-menu">
         <li class="menuItem">Home</li>
         <li class="menuItem" id="btn-character">Personajes</li>
@@ -29,10 +32,20 @@
       <span><i class="material-icons" id="menu-icon">menu</i></span>
     </nav>
     <main>
-      <section>
-        <input type="search" placeholder="Busca un personaje" id="search-bar">
+      <section id="section-character" class="hidden-section">
+        <div id="search-bar"></div>
         <div id="root" class="wrapper"></div>
         <div class="pagenumbers" id="pagination"></div>
+      </section>
+
+      <section>
+        <!--MODAL DE TARJETA POR PERSONAJES-->
+        <div id="modal_container" class="modal-container">
+          <div class="modal">
+            <p id="modal"></p>
+            <button id="cerrar" class="botonModal">X</button>
+          </div>
+        </div>
       </section>
     </main>
     <footer>
