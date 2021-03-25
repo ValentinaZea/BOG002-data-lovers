@@ -1,4 +1,5 @@
 import { searchByName } from "./data.js";
+import { getCharacter } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
 
 const btnCharacter = document.getElementById("btn-character");
@@ -79,7 +80,6 @@ function paginationButton(page, items) {
 //click menu personaje
 btnCharacter.addEventListener("click", () => {
   sectionCharacter.classList.remove("hidden-section");
-  //modalContainer.classList.add("showModal");
 });
 
 //menu
@@ -94,20 +94,21 @@ listMenu.addEventListener("click", (event) => {
 
 //pintar los datos  de  personaje
 listElement.addEventListener("click", (event) => {
-  //console.log(event.target);
-  //event.stopPropagation();
-  
-
-
-  // console.log(idCharacter.dataset.character);
-  if (event.target.classList.contains("card")) {
-  let cardDiv = document.querySelectorAll(".card").forEach((element)=>{
-    console.log(element);
-  });
-   
+  const cardNew = event.target.closest(".card");
+  if (cardNew) {
+    modalContainer.classList.add("showModal");
+    const idCard = parseInt(cardNew.dataset.character);
+    const characterInfo = getCharacter(data.results, idCard);
+    let divNew = document.createElement("div");
+    for (const property in characterInfo) {
+      let intem = `${property}: ${characterInfo[property]}`;
+      divNew.innerText += intem;
+    }
+    modal.appendChild(divNew);
   }
-  
 });
+
+
 
 displayList(data.results, listElement, numberCard, currentPage);
 setPagination(data.results, paginationElement, numberCard);
