@@ -48,8 +48,8 @@ function displayList(items, wrapper, cardPerPage, page) {
     newDiv.insertAdjacentElement("beforeend", nombre);
     newDiv.insertAdjacentElement("afterbegin", myImage);
     newDiv.classList.add("card");
-    nombre.classList.add("name");
-    myImage.classList.add("image");
+    nombre.classList.add("name-card");
+    myImage.classList.add("image-card");
     wrapper.appendChild(newDiv);
   }
 }
@@ -96,18 +96,37 @@ listMenu.addEventListener("click", (event) => {
 listElement.addEventListener("click", (event) => {
   const cardNew = event.target.closest(".card");
   if (cardNew) {
+    modal.innerHTML = " ";
     modalContainer.classList.add("showModal");
     const idCard = parseInt(cardNew.dataset.character);
-    const characterInfo = getCharacter(data.results, idCard);
-    let divNew = document.createElement("div");
-    for (const property in characterInfo) {
-      let intem = `${property}: ${characterInfo[property]}`;
-      divNew.innerText += intem;
-    }
-    modal.appendChild(divNew);
-  }
-});
+    let character = getCharacter(data.results, idCard);
+    let characterInfo = character["info"];
+    let characterImg = character["image"];
+    let exitButton = document.createElement("button");
+    exitButton.textContent = "X";
+    let listItem = document.createElement("ul");
+    let characterImage = document.createElement("img");
+    exitButton.classList.add('botonModal')
+    listItem.classList.add("character-list");
+    characterImage.classList.add("character-img");
 
+    for (const property in characterInfo) {
+      let item = document.createElement("li");
+      item.innerHTML = `<strong>${property}:</strong> ${characterInfo[property]}`;
+      listItem.appendChild(item);
+    }
+
+    for (const property in characterImg) {
+      characterImage.src = characterImg[property];
+    }
+    modal.appendChild(exitButton);
+    modal.appendChild(characterImage);
+    modal.appendChild(listItem);
+
+    exitButton.addEventListener("click", () =>
+    modalContainer.classList.remove("showModal")
+  );  }
+});
 
 
 displayList(data.results, listElement, numberCard, currentPage);
