@@ -21,7 +21,7 @@ export const getCharacter = (dataOriginal, idCard) => {
         Genero: dataOriginal[i].gender, 
         Origen: dataOriginal[i]["origin"].name,
         Locación: dataOriginal[i]["location"].name, 
-        Episodios: dataOriginal[i]["episode"].length
+        "Episodios de aparición": dataOriginal[i]["episode"].length
       },
       "image":{
          url: dataOriginal[i].image
