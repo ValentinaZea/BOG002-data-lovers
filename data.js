@@ -1,13 +1,5 @@
 // estas funciones son de ejemplo
 
-export const example = () => {
-  return "example";
-};
-
-export const anotherExample = () => {
-  return "OMG";
-};
-
 export const searchByName = (dataOriginal, input) => {
   let characterFound = [];
   dataOriginal.forEach((element) => {
@@ -16,3 +8,27 @@ export const searchByName = (dataOriginal, input) => {
   });
   return characterFound;
 };
+
+export const getCharacter = (dataOriginal, idCard) => {
+ let newList = {};
+    for (let i = 0; i < dataOriginal.length; i++) {
+    if (dataOriginal[i]["id"] === idCard) {
+      newList = {
+      "info": { 
+        Nombre : dataOriginal[i].name,
+        Estado: dataOriginal[i].status,
+        Especie: dataOriginal[i].species,
+        Genero: dataOriginal[i].gender, 
+        Origen: dataOriginal[i]["origin"].name,
+        Locación: dataOriginal[i]["location"].name, 
+        Episodios: dataOriginal[i]["episode"].length
+      },
+      "image":{
+         url: dataOriginal[i].image
+        },
+      }
+    }
+  }
+  return newList;
+};
+
