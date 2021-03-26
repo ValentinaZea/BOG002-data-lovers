@@ -20,7 +20,7 @@ main {
 }
 
 nav {
-  height: 4rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +49,7 @@ nav {
   transform: translateX(-100%);
   transition: transform 0.4s ease-out;
 }
-
+ 
 footer {
   text-align: center;
   color: #d2da4b;
@@ -67,7 +67,11 @@ footer {
   background-color: #1c1b43;
   color: white;
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: 9vw;
+}
+
+.menuItem{
+  font-size: 1rem;
 }
 
 .toggle {
@@ -235,6 +239,7 @@ footer {
     top: 0;
     justify-content: space-around;
   }
+
   .menuItem {
     margin: 0 1rem;
     font-size: 2rem;
