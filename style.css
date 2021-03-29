@@ -191,7 +191,7 @@ footer {
   font-family: "Indie Flower", cursive;
   font-size: 1rem;
   width: 80%;
-  height: 50%;
+  height: 15em;
   padding: 1em;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-bottom-left-radius: 10px;
@@ -205,16 +205,17 @@ footer {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-@media screen and (max-width: 640px) {
+
+/* @media screen and (max-width: 640px) {
 
   .menuItem:hover {
     background-color: rgb(255, 250, 250);
     color: #666666;
     border-radius: 10px;
   }
-}
+} */
 
-@media screen and (min-width: 640px) and (max-width: 1280px) {
+/* @media screen and (min-width: 640px) and (max-width: 1280px) {
   .menuItem {
     height: 4rem;
     font-size: 2.5rem;
@@ -229,9 +230,13 @@ footer {
   .wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
-}
+} */
 
-@media screen and (min-width: 1280px) {
+
+/* @media screen and (min-width: 1280px) and (orientation: landscape) {
+  
+*/
+@media  (orientation: landscape) {
   .list-menu {
     transform: translateX(0);
     position: relative;
@@ -254,7 +259,7 @@ footer {
   }
 
   .wrapper {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .modal {
