@@ -104,11 +104,13 @@ listElement.addEventListener("click", (event) => {
     let characterImg = character["image"];
     let exitButton = document.createElement("button");
     exitButton.textContent = "X";
+    let containerCharacter = document.createElement("div");
     let listItem = document.createElement("ul");
     let characterImage = document.createElement("img");
-    exitButton.classList.add('botonModal')
+    exitButton.classList.add("botonModal");
     listItem.classList.add("character-list");
     characterImage.classList.add("character-img");
+    containerCharacter.classList.add("containerCharacter");
 
     for (const property in characterInfo) {
       let item = document.createElement("li");
@@ -120,14 +122,15 @@ listElement.addEventListener("click", (event) => {
       characterImage.src = characterImg[property];
     }
     modal.appendChild(exitButton);
-    modal.appendChild(characterImage);
-    modal.appendChild(listItem);
+    containerCharacter.appendChild(characterImage);
+    containerCharacter.appendChild(listItem);
+    modal.appendChild(containerCharacter);
 
     exitButton.addEventListener("click", () =>
-    modalContainer.classList.remove("showModal")
-  );  }
+      modalContainer.classList.remove("showModal")
+    );
+  }
 });
-
 
 displayList(data.results, listElement, numberCard, currentPage);
 setPagination(data.results, paginationElement, numberCard);
