@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+/*mantener el  footer abajo*/
 html,
 body {
   height: 100%;
@@ -19,8 +20,17 @@ main {
   flex: 1 0 auto;
 }
 
+footer {
+  text-align: center;
+  color: #d2da4b;
+  font-size: 1.5em;
+  font-family: "Indie Flower", cursive;
+  flex-shrink: 0;
+}
+
+/*Barra de navegacion*/
 nav {
-  height: 3rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +42,6 @@ nav {
 
 .list-menu {
   margin: 0;
-  list-style-type: none;
   list-style-type: none;
   padding-left: 0;
   display: flex;
@@ -49,33 +58,32 @@ nav {
   transform: translateX(-100%);
   transition: transform 0.4s ease-out;
 }
- 
-footer {
-  text-align: center;
-  color: #d2da4b;
-  font-size: 1.5em;
-  font-family: "Indie Flower", cursive;
-  flex-shrink: 0;
-}
-
-.name-card {
-  font-size: 1.5rem;
-  text-align: center;
-}
 
 #menu-icon {
   background-color: #1c1b43;
   color: white;
   cursor: pointer;
-  font-size: 9vw;
+  font-size: 3rem;
 }
 
-.menuItem{
-  font-size: 1rem;
+.menuItem {
+  font-size: 2rem;
+}
+
+.menuItem:hover {
+  background-color: rgb(255, 250, 250);
+  color: #666666;
+  border-radius: 10px;
 }
 
 .toggle {
   transform: translateX(0);
+}
+
+/*tarjetas personajes*/
+.name-card {
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .image-card {
@@ -102,6 +110,17 @@ footer {
   grid-gap: 1rem;
 }
 
+.hidden-card {
+  visibility: hidden;
+  opacity: 0;
+  order: 1;
+}
+
+.hidden-section {
+  display: none;
+}
+
+/*paginacion*/
 .pagenumbers {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
@@ -120,16 +139,7 @@ footer {
   background-color: #d2da4b;
 }
 
-.hidden-card {
-  visibility: hidden;
-  opacity: 0;
-  order: 1;
-}
-
-.hidden-section {
-  display: none;
-}
-
+/*barra de  busqueda*/
 .search-bar {
   width: 80%;
   height: 50px;
@@ -141,11 +151,9 @@ footer {
   text-align: center;
 }
 
+/*modal*/
 .modal-container {
-  display: flex;
   background-color: rgba(0, 0, 0, 0.3);
-  align-items: center;
-  justify-content: center;
   position: fixed;
   pointer-events: none;
   opacity: 0;
@@ -153,7 +161,9 @@ footer {
   left: 0;
   height: 100vh;
   width: 100vw;
+  padding: 1rem;
   transition: opacity 0.3s ease;
+  overflow-y: auto;
 }
 
 .showModal {
@@ -161,19 +171,22 @@ footer {
   opacity: 1;
 }
 
-
 .modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   position: relative;
   background-color: #d2da4b;
-  width: 100vw;
-  height: 90vh;
+  width: 100%;
   padding: 8%;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+}
+
+.containerCharacter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #16acc9;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .botonModal {
@@ -186,57 +199,30 @@ footer {
 }
 
 .character-list {
-  background-color: #16acc9;
   list-style-type: none;
   font-family: "Indie Flower", cursive;
-  font-size: 1rem;
-  width: 80%;
-  height: 15em;
-  padding: 1em;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 1rem;
 }
 
 .character-img {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  width: 80%;
-  height: 50%;
+  width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-/* @media screen and (max-width: 640px) {
-
-  .menuItem:hover {
-    background-color: rgb(255, 250, 250);
-    color: #666666;
-    border-radius: 10px;
-  }
-} */
-
-/* @media screen and (min-width: 640px) and (max-width: 1280px) {
-  .menuItem {
-    height: 4rem;
-    font-size: 2.5rem;
-  }
-
-  .menuItem:hover {
-    background-color: rgb(255, 250, 250);
-    color: #666666;
-    border-radius: 10px;
-  }
-
+/*responsive*/
+@media screen and (min-width: 640px) {
   .wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
-} */
+} 
 
 
-/* @media screen and (min-width: 1280px) and (orientation: landscape) {
-  
-*/
-@media  (orientation: landscape) {
+@media screen and (min-width: 1280px) {
+  /*barra de navegacion*/
   .list-menu {
     transform: translateX(0);
     position: relative;
@@ -252,6 +238,9 @@ footer {
 
   .menuItem:hover {
     text-decoration: underline;
+    background-color: transparent;
+    color: white;
+    border-radius: 0;
   }
 
   #menu-icon {
@@ -262,18 +251,29 @@ footer {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .modal {
-    flex-direction: row;
-    width: 800px;
+  /*modal*/
+  .modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .character-list {
-    font-size: 1.65rem;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 10px;
+  .modal {
+    width: 70%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .containerCharacter {
+    width: 90%;
+    flex-direction: row;
+    border-radius: 10px;
   }
 
   .character-img {
+    height: 100%;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 0;
   }
