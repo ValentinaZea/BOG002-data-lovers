@@ -206,7 +206,6 @@ nav {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
   padding: 1.5rem 0 1.5rem 2rem;
-  margin-top: 2rem;
 }
 
 .containerCharacter {
@@ -232,7 +231,7 @@ nav {
   font-family: "Indie Flower", cursive;
   font-size: 1rem;
   width: 100%;
-  padding: 1rem;
+  padding: 1.3rem;
 }
 
 .character-img {
