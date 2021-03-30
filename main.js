@@ -22,6 +22,8 @@ let modalContainer = document.getElementById("modal_container");
 let modal = document.getElementById("modal");
 let currentPage = 1;
 let numberCard = 32;
+let filters = {};
+let filteredData = data.results;
 
 //barra de busqueda
 function search() {
@@ -162,7 +164,7 @@ listOrder.addEventListener("click", (event) => {
 
 sectionCharacter.addEventListener("click", (event) => {
   if (event.target.classList.contains("category")) {
-    let dataFilter = [];
+    let dataFilter = {};
     // listStatus.innerHTML = "";
     // listGender.innerHTML = "";
     // listSpecie.innerHTML = "";
@@ -171,48 +173,71 @@ sectionCharacter.addEventListener("click", (event) => {
       const statusFilter = new Set(
         data.results.map((element) => element.status)
       );
-      dataFilter = [...statusFilter];
+      dataFilter = { id: "status", list: [...statusFilter] };
       drawList(dataFilter, listStatus);
     }
     if (event.target.id === "filter-gender") {
       const genderFilter = new Set(
         data.results.map((element) => element.gender)
       );
-      dataFilter = [...genderFilter];
+      dataFilter = { id: "gender", list: [...genderFilter] };
       drawList(dataFilter, listGender);
     }
     if (event.target.id === "filter-specie") {
       const speciesFilter = new Set(
         data.results.map((element) => element.species)
       );
-      dataFilter = [...speciesFilter];
+      dataFilter = { id: "species", list: [...speciesFilter] };
       drawList(dataFilter, listSpecie);
     }
   }
+  //filtros
   if (event.target.classList.contains("btn-filter")) {
-    let idBtn = event.target.id;
-    let filterGenderData = filterDataGender(data.results, idBtn);
+    const { id, value } = event.target.dataset;
+    filters[id] = value;
+      const filterGenderData = filterDataCategories(filters);
     displayList(filterGenderData, listElement, numberCard, currentPage);
   }
 });
 
-function drawList(resultGender, listFilter) {
+function drawList(results, listFilter) {
   if (!listFilter.innerHTML) {
-    resultGender.forEach((element) => {
+    results.list.forEach((element) => {
       let btnCategory = document.createElement("li");
       btnCategory.textContent = element;
       btnCategory.classList.add("btn-filter");
-      btnCategory.id = element;
+      btnCategory.dataset.id = results.id;
+      btnCategory.dataset.value = element;
       listFilter.appendChild(btnCategory);
     });
+    return;
   }
+
+  listFilter.innerHTML = "";
 }
 
-function filterDataGender(data, condicion) {
-  let filteredData = data.filter((obj) => {
-    return obj.gender === condicion;
+function filterDataCategories(filter) {
+  // const filteredData = data.filter((obj) => {
+  //   return obj[id] === value;
+  // });
+  // return filteredData;
+  let count = 0;
+  const keys = Object.keys(filter);
+  if (keys.length === 0) {
+    return data.results;
+  }
+  keys.forEach((key) => {
+    const filterByCategory = filteredData.filter(
+      (obj) => obj[key] === filters[key]
+    );
+    filteredData = [...filterByCategory];
+    count++;
   });
-  return filteredData;
+
+  if (count === keys.length) {
+    return filteredData;
+  }
+  filterDataCategories(filteredData, filters);
 }
 
 displayList(data.results, listElement, numberCard, currentPage);

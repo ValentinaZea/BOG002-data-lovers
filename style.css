@@ -128,17 +128,23 @@ nav {
   flex-direction: row;
   list-style-type: none;
   color: #f3e4e4;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
-.filter-list{
+.filter-list {
   display: flex;
   flex-direction: column;
   list-style-type: none;
 }
 
 .filter-btn {
+  /*boton az*/
   border: solid 1px yellow;
+  cursor: pointer;
+}
+
+.btn-filter {
+  border: solid 1px green;
   cursor: pointer;
 }
 
@@ -197,9 +203,10 @@ nav {
   position: relative;
   background-color: #d2da4b;
   width: 100%;
-  padding: 8%;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+  padding: 1.5rem 0 1.5rem 2rem;
+  margin-top: 2rem;
 }
 
 .containerCharacter {
@@ -209,6 +216,7 @@ nav {
   background-color: #16acc9;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  width: 90%;
 }
 
 .botonModal {
@@ -217,13 +225,12 @@ nav {
   right: 0;
   font-size: 1.5rem;
   width: 8%;
-  height: 6%;
 }
 
 .character-list {
   list-style-type: none;
   font-family: "Indie Flower", cursive;
-  font-size: 1.5rem;
+  font-size: 1rem;
   width: 100%;
   padding: 1rem;
 }
@@ -238,7 +245,7 @@ nav {
 /*responsive*/
 @media screen and (min-width: 640px) {
   .wrapper {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -280,15 +287,14 @@ nav {
   }
 
   .modal {
-    width: 70%;
-    height: 90%;
+    width: 50%;
+    height: 64%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .containerCharacter {
-    width: 90%;
     flex-direction: row;
     border-radius: 10px;
   }

@@ -42,7 +42,7 @@ export const sortData = (data, sortOrder) => {
     }
     return 0;
   });
-  if (sortOrder != 'asc') {
+  if (sortOrder !== 'asc') {
     return data.reverse();
   }
   return data;
