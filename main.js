@@ -1,5 +1,6 @@
 import { searchByName } from "./data.js";
 import { getCharacter } from "./data.js";
+import { sortData } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
 
 const btnCharacter = document.getElementById("btn-character");
@@ -9,6 +10,14 @@ const menuIcon = document.querySelector("#menu-icon");
 const listMenu = document.querySelector("#list-menu");
 const searchBar = document.getElementById("search-bar");
 const sectionCharacter = document.getElementById("section-character");
+const orderFilter = document.getElementById("filter-order");
+const listOrder = document.getElementById("list-order");
+const filterStatus = document.getElementById("filter-status");
+const listStatus = document.getElementById("list-status");
+const filterGender = document.getElementById("filter-gender");
+const listGender = document.getElementById("list-gender");
+const filterSpecie = document.getElementById("filter-specie");
+const listSpecie = document.getElementById("list-specie");
 let modalContainer = document.getElementById("modal_container");
 let modal = document.getElementById("modal");
 let currentPage = 1;
@@ -111,13 +120,11 @@ listElement.addEventListener("click", (event) => {
     listItem.classList.add("character-list");
     characterImage.classList.add("character-img");
     containerCharacter.classList.add("containerCharacter");
-
     for (const property in characterInfo) {
       let item = document.createElement("li");
       item.innerHTML = `<strong>${property}:</strong> ${characterInfo[property]}`;
       listItem.appendChild(item);
     }
-
     for (const property in characterImg) {
       characterImage.src = characterImg[property];
     }
@@ -125,12 +132,88 @@ listElement.addEventListener("click", (event) => {
     containerCharacter.appendChild(characterImage);
     containerCharacter.appendChild(listItem);
     modal.appendChild(containerCharacter);
-
     exitButton.addEventListener("click", () =>
       modalContainer.classList.remove("showModal")
     );
   }
 });
+
+//ordenar de la a-z  z-a
+orderFilter.addEventListener("click", () => {
+  listOrder.innerHTML = "";
+  let filterAz = document.createElement("li");
+  filterAz.textContent = "A - Z";
+  let filterZa = document.createElement("li");
+  filterZa.textContent = "Z - A";
+  listOrder.insertAdjacentElement("afterbegin", filterAz);
+  listOrder.insertAdjacentElement("beforeend", filterZa);
+  filterZa.classList.add("filter-btn");
+  filterAz.classList.add("filter-btn");
+  filterAz.id = "asc";
+  filterZa.id = "desc";
+});
+listOrder.addEventListener("click", (event) => {
+  if (event.target.classList.contains("filter-btn")) {
+    let idFilter = event.target.id;
+    let sortedCharacters = sortData(data.results, idFilter);
+    displayList(sortedCharacters, listElement, numberCard, currentPage);
+  }
+});
+
+sectionCharacter.addEventListener("click", (event) => {
+  if (event.target.classList.contains("category")) {
+    let dataFilter = [];
+    // listStatus.innerHTML = "";
+    // listGender.innerHTML = "";
+    // listSpecie.innerHTML = "";
+
+    if (event.target.id === "filter-status") {
+      const statusFilter = new Set(
+        data.results.map((element) => element.status)
+      );
+      dataFilter = [...statusFilter];
+      drawList(dataFilter, listStatus);
+    }
+    if (event.target.id === "filter-gender") {
+      const genderFilter = new Set(
+        data.results.map((element) => element.gender)
+      );
+      dataFilter = [...genderFilter];
+      drawList(dataFilter, listGender);
+    }
+    if (event.target.id === "filter-specie") {
+      const speciesFilter = new Set(
+        data.results.map((element) => element.species)
+      );
+      dataFilter = [...speciesFilter];
+      drawList(dataFilter, listSpecie);
+    }
+  }
+  if (event.target.classList.contains("btn-filter")) {
+    let idBtn = event.target.id;
+    let filterGenderData = filterDataGender(data.results, idBtn);
+    displayList(filterGenderData, listElement, numberCard, currentPage);
+  }
+});
+
+function drawList(resultGender, listFilter) {
+  if (!listFilter.innerHTML) {
+    resultGender.forEach((element) => {
+      let btnCategory = document.createElement("li");
+      btnCategory.textContent = element;
+      btnCategory.classList.add("btn-filter");
+      btnCategory.id = element;
+      listFilter.appendChild(btnCategory);
+    });
+  }
+}
+
+function filterDataGender(data, condicion) {
+  let filteredData = data.filter((obj) => {
+    return obj.gender === condicion;
+  });
+  return filteredData;
+}
 
 displayList(data.results, listElement, numberCard, currentPage);
 setPagination(data.results, paginationElement, numberCard);
