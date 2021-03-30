@@ -120,6 +120,28 @@ nav {
   display: none;
 }
 
+/*filtros*/
+.filter-character {
+  border: solid 1px red;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  list-style-type: none;
+  color: #f3e4e4;
+  cursor: pointer;  
+}
+
+.filter-list{
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.filter-btn {
+  border: solid 1px yellow;
+  cursor: pointer;
+}
+
 /*paginacion*/
 .pagenumbers {
   display: grid;
@@ -218,8 +240,7 @@ nav {
   .wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
-} 
-
+}
 
 @media screen and (min-width: 1280px) {
   /*barra de navegacion*/

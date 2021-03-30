@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -34,6 +34,27 @@
     <main>
       <section id="section-character" class="hidden-section">
         <div id="search-bar"></div>
+        <div >
+          <ul class="filter-character">
+            <li id="filter-order" class="category">
+              ORDENAR
+              <ul id="list-order" class="filter-list"></ul>
+            </li>
+            <li id="filter-status" class="category">
+              ESTADO
+              <ul id="list-status" class="filter-list"></ul>
+            </li>
+            <li id="filter-gender" class="category">
+              GENERO
+              <ul id="list-gender" class="filter-list"></ul>
+            </li>
+            <li id="filter-specie" class="category">
+              ESPECIE
+              <ul id="list-specie" class="filter-list"></ul>
+            </li>
+          </ul>
+          <hr />
+        </div>
         <div id="root" class="wrapper"></div>
         <div class="pagenumbers" id="pagination"></div>
       </section>
@@ -41,8 +62,7 @@
       <section>
         <!--MODAL DE TARJETA POR PERSONAJES-->
         <div id="modal_container" class="modal-container">
-          <div class="modal" id="modal">
-           </div>
+          <div class="modal" id="modal"></div>
         </div>
       </section>
     </main>
