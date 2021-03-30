@@ -10,25 +10,40 @@ export const searchByName = (dataOriginal, input) => {
 };
 
 export const getCharacter = (dataOriginal, idCard) => {
- let newList = {};
-    for (let i = 0; i < dataOriginal.length; i++) {
+  let newList = {};
+  for (let i = 0; i < dataOriginal.length; i++) {
     if (dataOriginal[i]["id"] === idCard) {
       newList = {
-      "info": { 
-        Nombre : dataOriginal[i].name,
-        Estado: dataOriginal[i].status,
-        Especie: dataOriginal[i].species,
-        Genero: dataOriginal[i].gender, 
-        Origen: dataOriginal[i]["origin"].name,
-        Locación: dataOriginal[i]["location"].name, 
-        "Episodios de aparición": dataOriginal[i]["episode"].length
-      },
-      "image":{
-         url: dataOriginal[i].image
+        info: {
+          Nombre: dataOriginal[i].name,
+          Estado: dataOriginal[i].status,
+          Especie: dataOriginal[i].species,
+          Genero: dataOriginal[i].gender,
+          Origen: dataOriginal[i]["origin"].name,
+          Locación: dataOriginal[i]["location"].name,
+          "Episodios de aparición": dataOriginal[i]["episode"].length,
         },
-      }
+        image: {
+          url: dataOriginal[i].image,
+        },
+      };
     }
   }
   return newList;
 };
 
+export const sortData = (data, sortOrder) => {
+   data.sort((a, b) => {
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
+    return 0;
+  });
+  if (sortOrder !== 'asc') {
+    return data.reverse();
+  }
+  return data;
+};
