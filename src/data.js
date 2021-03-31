@@ -1,6 +1,4 @@
-// estas funciones son de ejemplo
-
-export const searchByName = (dataOriginal, input) => {
+export const searchByName = (dataOriginal, input) => {  //barra de busqueda
   let characterFound = [];
   dataOriginal.forEach((element) => {
     if (element.name.toLowerCase().includes(input))
@@ -9,7 +7,7 @@ export const searchByName = (dataOriginal, input) => {
   return characterFound;
 };
 
-export const getCharacter = (dataOriginal, idCard) => {
+export const getCharacter = (dataOriginal, idCard) => { // datos personaje por tarjeta
   let newList = {};
   for (let i = 0; i < dataOriginal.length; i++) {
     if (dataOriginal[i]["id"] === idCard) {
@@ -32,7 +30,7 @@ export const getCharacter = (dataOriginal, idCard) => {
   return newList;
 };
 
-export const sortData = (data, sortOrder) => {
+export const sortData = (data, sortOrder) => { // ordenar a la az
    data.sort((a, b) => {
     if (a.name > b.name) {
       return 1;
