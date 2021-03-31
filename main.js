@@ -1,6 +1,4 @@
-import { searchByName } from "./data.js";
-import { getCharacter } from "./data.js";
-import { sortData } from "./data.js";
+import { searchByName, getCharacter, sortData } from "./data.js";
 import data from "./data/rickandmorty/rickandmorty.js";
 
 const btnCharacter = document.getElementById("btn-character");
@@ -12,18 +10,15 @@ const searchBar = document.getElementById("search-bar");
 const sectionCharacter = document.getElementById("section-character");
 const orderFilter = document.getElementById("filter-order");
 const listOrder = document.getElementById("list-order");
-const filterStatus = document.getElementById("filter-status");
 const listStatus = document.getElementById("list-status");
-const filterGender = document.getElementById("filter-gender");
 const listGender = document.getElementById("list-gender");
-const filterSpecie = document.getElementById("filter-specie");
 const listSpecie = document.getElementById("list-specie");
+const DeleteBtn = document.getElementById("btn-delete");
 let modalContainer = document.getElementById("modal_container");
 let modal = document.getElementById("modal");
 let currentPage = 1;
 let numberCard = 32;
 let filters = {};
-let filteredData = data.results;
 
 //barra de busqueda
 function search() {
@@ -36,6 +31,8 @@ function search() {
     let textInpunt = barSearch.value.toLowerCase();
     let newCharacterFound = searchByName(data.results, textInpunt);
     displayList(newCharacterFound, listElement, numberCard, currentPage);
+    setPagination(newCharacterFound, paginationElement, numberCard);
+    orderData(newCharacterFound);
   });
 }
 
@@ -154,21 +151,22 @@ orderFilter.addEventListener("click", () => {
   filterAz.id = "asc";
   filterZa.id = "desc";
 });
-listOrder.addEventListener("click", (event) => {
-  if (event.target.classList.contains("filter-btn")) {
-    let idFilter = event.target.id;
-    let sortedCharacters = sortData(data.results, idFilter);
-    displayList(sortedCharacters, listElement, numberCard, currentPage);
-  }
-});
+
+function orderData(data) {
+  listOrder.addEventListener("click", (event) => {
+    //ordenar de la az
+    if (event.target.classList.contains("filter-btn")) {
+      let idFilter = event.target.id;
+      let sortedCharacters = sortData(data, idFilter);
+      displayList(sortedCharacters, listElement, numberCard, currentPage);
+    }
+  });
+}
 
 sectionCharacter.addEventListener("click", (event) => {
+  //llenar listas  filtros
   if (event.target.classList.contains("category")) {
     let dataFilter = {};
-    // listStatus.innerHTML = "";
-    // listGender.innerHTML = "";
-    // listSpecie.innerHTML = "";
-
     if (event.target.id === "filter-status") {
       const statusFilter = new Set(
         data.results.map((element) => element.status)
@@ -191,15 +189,46 @@ sectionCharacter.addEventListener("click", (event) => {
       drawList(dataFilter, listSpecie);
     }
   }
-  //filtros
   if (event.target.classList.contains("btn-filter")) {
-    const { id, value } = event.target.dataset;
-    filters[id] = value;
-      const filterGenderData = filterDataCategories(filters);
-    displayList(filterGenderData, listElement, numberCard, currentPage);
+    //filtros
+    let currentBtn = event.target;
+    // currentBtn.classList.remove("active");
+    let otherBtn = document.querySelectorAll('.btn-filter')
+    // otherBtn.classList.add('btn-filter.active')
+    console.log(otherBtn)
+        const { id, value } = event.target.dataset;
+        console.log(value)
+        filters[id] = value;
+
+    if (filters[id] === value) {
+      currentBtn.classList.add("active");
+    }  
+    if (filters[id] === value ) {
+      currentBtn.classList.add("active");
+    }
+
+     console.log(filters);
+   
+    const filterData = filterDataCategories(data.results, filters);
+    setPagination(filterData, paginationElement, numberCard);
+    displayList(filterData, listElement, numberCard, currentPage);
+    orderData(filterData);
   }
 });
 
+DeleteBtn.addEventListener("click", () => {
+  filters = {};
+  let btnFilter = document.querySelectorAll(".btn-filter.active");
+  btnFilter.forEach((element) => {
+    element.classList.remove("active");
+  });
+  filterDataCategories(data.results, filters);
+  displayList(data.results, listElement, numberCard, currentPage);
+  setPagination(data.results, paginationElement, numberCard);
+  orderData(data.results);
+});
+
+//pintar filtros
 function drawList(results, listFilter) {
   if (!listFilter.innerHTML) {
     results.list.forEach((element) => {
@@ -212,15 +241,10 @@ function drawList(results, listFilter) {
     });
     return;
   }
-
   listFilter.innerHTML = "";
 }
 
-function filterDataCategories(filter) {
-  // const filteredData = data.filter((obj) => {
-  //   return obj[id] === value;
-  // });
-  // return filteredData;
+function filterDataCategories(filteredData, filter) {
   let count = 0;
   const keys = Object.keys(filter);
   if (keys.length === 0) {
@@ -233,10 +257,11 @@ function filterDataCategories(filter) {
     filteredData = [...filterByCategory];
     count++;
   });
-
   if (count === keys.length) {
+    // console.log(filteredData)
     return filteredData;
   }
+
   filterDataCategories(filteredData, filters);
 }
 
