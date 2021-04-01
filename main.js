@@ -190,25 +190,20 @@ sectionCharacter.addEventListener("click", (event) => {
     }
   }
   if (event.target.classList.contains("btn-filter")) {
-    //filtros
-    let currentBtn = event.target;
-    // currentBtn.classList.remove("active");
-    let otherBtn = document.querySelectorAll('.btn-filter')
-    // otherBtn.classList.add('btn-filter.active')
-    console.log(otherBtn)
-        const { id, value } = event.target.dataset;
-        console.log(value)
-        filters[id] = value;
+    const othersButtons = document.querySelectorAll(".btn-filter");
+    const { id, value } = event.target.dataset;
+    filters[id] = value;
+    othersButtons.forEach((element) => {
+      // const idByElement =element.dataset.id;
+      // const valueByElement= element.dataset.value
+      const { id: idByElement, value: valueByElement } = element.dataset;
+      if (filters[idByElement] === valueByElement) {
+        element.classList.add('active');
+      } else {
+        element.classList.remove('active');
+      }
+    });
 
-    if (filters[id] === value) {
-      currentBtn.classList.add("active");
-    }  
-    if (filters[id] === value ) {
-      currentBtn.classList.add("active");
-    }
-
-     console.log(filters);
-   
     const filterData = filterDataCategories(data.results, filters);
     setPagination(filterData, paginationElement, numberCard);
     displayList(filterData, listElement, numberCard, currentPage);
