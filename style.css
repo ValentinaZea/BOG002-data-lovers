@@ -152,6 +152,11 @@ nav {
   background-color: greenyellow;
 }
 
+.btn-filter.inactive {
+  background-color: gray;
+  opacity: .4;
+}
+
 /*paginacion*/
 .pagenumbers {
   width: 80%;
