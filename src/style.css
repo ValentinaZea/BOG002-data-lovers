@@ -157,6 +157,10 @@ nav {
   opacity: .4;
 }
 
+.category{
+  border: solid 1px blue;
+}
+
 /*paginacion*/
 .pagenumbers {
   width: 80%;
@@ -384,6 +388,12 @@ nav {
   }
 
   .character-list {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
+
+  .filter-list {
+    display: grid;
+    list-style-type: none;  
+    grid-template-columns: repeat(2, 1fr);
+}
 }
