@@ -1,4 +1,6 @@
-export const searchByName = (dataOriginal, input) => {  //barra de busqueda
+import data from "./data/rickandmorty/rickandmorty.js";
+export const searchByName = (dataOriginal, input) => {
+  //barra de busqueda
   let characterFound = [];
   dataOriginal.forEach((element) => {
     if (element.name.toLowerCase().includes(input))
@@ -7,7 +9,8 @@ export const searchByName = (dataOriginal, input) => {  //barra de busqueda
   return characterFound;
 };
 
-export const getCharacter = (dataOriginal, idCard) => { // datos personaje por tarjeta
+export const getCharacter = (dataOriginal, idCard) => {
+  // datos personaje por tarjeta
   let newList = {};
   for (let i = 0; i < dataOriginal.length; i++) {
     if (dataOriginal[i]["id"] === idCard) {
@@ -30,8 +33,9 @@ export const getCharacter = (dataOriginal, idCard) => { // datos personaje por t
   return newList;
 };
 
-export const sortData = (data, sortOrder) => { // ordenar a la az
-   data.sort((a, b) => {
+export const sortData = (data, sortOrder) => {
+  // ordenar a la az
+  data.sort((a, b) => {
     if (a.name > b.name) {
       return 1;
     }
@@ -40,8 +44,27 @@ export const sortData = (data, sortOrder) => { // ordenar a la az
     }
     return 0;
   });
-  if (sortOrder !== 'asc') {
+  if (sortOrder !== "asc") {
     return data.reverse();
   }
   return data;
 };
+
+export function filterDataCategories(filteredData, filter) {
+  let count = 0;
+  const keys = Object.keys(filter);
+  if (keys.length === 0) {
+    return data.results;
+  }
+  keys.forEach((key) => {
+    const filterByCategory = filteredData.filter(
+      (obj) => obj[key] === filter[key]
+    );
+    filteredData = [...filterByCategory];
+    count++;
+  });
+  if (count === keys.length) {
+    return filteredData;
+  }
+  filterDataCategories(filteredData, filter);
+}
