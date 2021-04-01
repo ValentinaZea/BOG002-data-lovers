@@ -33,30 +33,29 @@
     </nav>
     <main>
       <section id="section-character" class="hidden-section">
-        <div id="search-bar" class="containder-bar">
-          <button id="btn-delete" class="btn-delete">Borrar Filtros</button>
+        <div class="container-bar-sort">
+          <div id="search-bar" class="container-bar"></div>
+          <div class="container-sort">
+            <div id="list-order"></div>
+            <button id="btn-delete" class="btn-delete">PERSONAJES</button>
+          </div>
         </div>
-        <div>
-          <ul class="filter-character">
-            <li id="filter-order" class="category">
-              ORDENAR
-              <ul id="list-order" class="filter-list"></ul>
-            </li>
-            <li id="filter-status" class="category">
-              ESTADO
-              <ul id="list-status" class="filter-list"></ul>
-            </li>
-            <li id="filter-gender" class="category">
-              GENERO
-              <ul id="list-gender" class="filter-list"></ul>
-            </li>
-            <li id="filter-specie" class="category">
-              ESPECIE
-              <ul id="list-specie" class="filter-list"></ul>
-            </li>
-          </ul>
-          <hr />
-        </div>
+        <ul class="filter-character">
+          <li id="filter-status" class="category">
+            ESTADO
+            <ul id="list-status" class="filter-list"></ul>
+          </li>
+          <li id="filter-gender" class="category">
+            GENERO
+            <ul id="list-gender" class="filter-list"></ul>
+          </li>
+          <li id="filter-specie" class="category">
+            ESPECIE
+            <ul id="list-specie" class="filter-list"></ul>
+          </li>
+        </ul>
+      
+
         <div id="root" class="wrapper"></div>
         <div class="pagenumbers" id="pagination"></div>
       </section>

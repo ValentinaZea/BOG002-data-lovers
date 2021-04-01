@@ -8,7 +8,6 @@ const menuIcon = document.querySelector("#menu-icon");
 const listMenu = document.querySelector("#list-menu");
 const searchBar = document.getElementById("search-bar");
 const sectionCharacter = document.getElementById("section-character");
-const orderFilter = document.getElementById("filter-order");
 const listOrder = document.getElementById("list-order");
 const listStatus = document.getElementById("list-status");
 const listGender = document.getElementById("list-gender");
@@ -59,7 +58,7 @@ function displayList(items, wrapper, cardPerPage, page) {
     nombre.classList.add("name-card");
     myImage.classList.add("image-card");
     wrapper.appendChild(newDiv);
-  }
+   }
 }
 
 function setPagination(items, wrapper, cardPerPage) {
@@ -138,24 +137,26 @@ listElement.addEventListener("click", (event) => {
 });
 
 //ordenar de la a-z  z-a
-orderFilter.addEventListener("click", () => {
+function drawSort() {
   listOrder.innerHTML = "";
-  let filterAz = document.createElement("li");
-  filterAz.textContent = "A - Z";
-  let filterZa = document.createElement("li");
-  filterZa.textContent = "Z - A";
+  let filterAz = document.createElement("img");
+  filterAz.src = "img/az.svg";
+  let filterZa = document.createElement("img");
+  filterZa.src = "img/za.svg";
   listOrder.insertAdjacentElement("afterbegin", filterAz);
   listOrder.insertAdjacentElement("beforeend", filterZa);
   filterZa.classList.add("filter-btn");
   filterAz.classList.add("filter-btn");
   filterAz.id = "asc";
   filterZa.id = "desc";
-});
+}
 
 function orderData(data) {
   listOrder.addEventListener("click", (event) => {
+    console.log(event.target);
     //ordenar de la az
     if (event.target.classList.contains("filter-btn")) {
+      console.log(event.target);
       let idFilter = event.target.id;
       let sortedCharacters = sortData(data, idFilter);
       displayList(sortedCharacters, listElement, numberCard, currentPage);
@@ -198,9 +199,11 @@ sectionCharacter.addEventListener("click", (event) => {
       // const valueByElement= element.dataset.value
       const { id: idByElement, value: valueByElement } = element.dataset;
       if (filters[idByElement] === valueByElement) {
-        element.classList.add('active');
+        element.classList.remove("inactive");
+        element.classList.add("active");
       } else {
-        element.classList.remove('active');
+        element.classList.remove("active");
+        element.classList.add("inactive");
       }
     });
 
@@ -211,10 +214,12 @@ sectionCharacter.addEventListener("click", (event) => {
   }
 });
 
+
 DeleteBtn.addEventListener("click", () => {
   filters = {};
-  let btnFilter = document.querySelectorAll(".btn-filter.active");
+  let btnFilter = document.querySelectorAll(".btn-filter");
   btnFilter.forEach((element) => {
+    element.classList.remove("inactive");
     element.classList.remove("active");
   });
   filterDataCategories(data.results, filters);
@@ -222,6 +227,7 @@ DeleteBtn.addEventListener("click", () => {
   setPagination(data.results, paginationElement, numberCard);
   orderData(data.results);
 });
+
 
 //pintar filtros
 function drawList(results, listFilter) {
@@ -260,6 +266,7 @@ function filterDataCategories(filteredData, filter) {
   filterDataCategories(filteredData, filters);
 }
 
-displayList(data.results, listElement, numberCard, currentPage);
-setPagination(data.results, paginationElement, numberCard);
+//displayList(data.results, listElement, numberCard, currentPage);
+//setPagination(data.results, paginationElement, numberCard);
 search();
+drawSort();

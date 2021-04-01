@@ -106,7 +106,7 @@ nav {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   width: 80%;
-  margin: 4rem auto;
+  margin: 2rem auto;
   grid-gap: 1rem;
 }
 
@@ -122,43 +122,52 @@ nav {
 
 /*filtros*/
 .filter-character {
-  border: solid 1px red;
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
   list-style-type: none;
   color: #f3e4e4;
   cursor: pointer;
+  text-align: center;
+  font-family: "Ravi Prakash", cursive;
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
 .filter-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
   list-style-type: none;
-}
-
-.filter-btn {
-  /*boton az*/
-  border: solid 1px yellow;
-  cursor: pointer;
+  border-bottom: solid 1px white;
 }
 
 .btn-filter {
-  border: solid 1px green;
+  border: solid 1px white;
+  border-radius: 4px;
+  padding: 0 0.5rem;
+  margin: 0 0.3rem 0.5rem 0;
   cursor: pointer;
+  font-family: "Indie Flower", cursive;
+  color: #d2da4b;
+  font-size: 1.4rem;
 }
 
 .btn-filter.active {
-  background-color: greenyellow;
+  background-color: #d2da4b;
+  color: #333;
+  border: solid #333 1px;
 }
 
 .btn-filter.inactive {
   background-color: gray;
-  opacity: .4;
+  opacity: 0.4;
+  color: white;
 }
 
-.category{
-  border: solid 1px blue;
+.category {
+  width: 85%;
 }
 
 /*paginacion*/
@@ -184,29 +193,60 @@ nav {
 }
 
 /*barra de  busqueda*/
-.containder-bar {
+.container-bar-sort {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-
-  margin: 1rem 0;
+  width: 100%;
 }
+
+.container-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .search-bar {
-  width: 70%;
+  width: 80%;
   height: 2.5rem;
   border-radius: 25px;
   font-size: 1.5rem;
   font-family: "Ravi Prakash", cursive;
   text-align: center;
+  margin: 1rem 0;
+}
+
+.container-sort {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 .btn-delete {
-  height: 2rem;
-  width: 6rem;
-  font-size: 1rem;
+  /*boton personajes*/
+  height: 2.7rem;
+  width: 8rem;
+  font-size: 1.5rem;
   font-family: "Ravi Prakash", cursive;
-  background-color: #16acc9;
-  border-radius: 10px;
-  margin-top: 1rem;
+  background-color: transparent;
+  border-radius: 8px;
+  color: #16acc9;
+  border: white solid 1px;
+  text-align: center;
+  padding-top: 0.2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.filter-btn {
+  /*boton az*/
+  border-radius: 3px;
+  border: white solid 1px;
+  cursor: pointer;
+  width: 2.2rem;
+  height: 100%;
+  margin-right: 0.5rem;
+  background-color: tr;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 /*modal*/
@@ -312,18 +352,30 @@ nav {
   .botonModal {
     width: 6%;
   }
+
+  .container-bar-sort {
+    flex-direction: row;
+  }
+  .container-bar {
+    width: 50%;
+  }
+
+  .container-sort {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   /*barra de navegacion*/
   .containder-bar {
-    flex-direction: row-reverse;
-    justify-content: center;
+    justify-content: flex-end;
     margin: 1rem 0;
   }
 
   .search-bar {
-    width: 40%;
+    width: 65%;
     height: 2.5rem;
     border-radius: 25px;
     font-size: 1.5rem;
@@ -391,9 +443,35 @@ nav {
     font-size: 1.3rem;
   }
 
-  .filter-list {
-    display: grid;
-    list-style-type: none;  
-    grid-template-columns: repeat(2, 1fr);
-}
+  .container-bar-sort {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .container-bar {
+    width: 50%;
+    justify-content: flex-end;
+  }
+  .container-sort {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    width: 3rem;
+    height: auto;
+  }
+  /* .filter-character {
+    flex-direction: row;
+    align-items: flex-start;
+  } */
+  /* .filter-list {
+    border-bottom: transparent solid 1px;
+  } */
+
+  .category{
+    width: 80%;
+  }
 }
