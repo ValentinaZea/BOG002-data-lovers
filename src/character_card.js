@@ -4,12 +4,12 @@ import {getCharacter} from "./data.js";
 let modalContainer = document.getElementById("modal_container");
 let modal = document.getElementById("modal");
 
-    export function paintCharacterCard(cardNew,data){
+    export function paintCharacterCard(cardNew){
     if (cardNew) {
       modal.innerHTML = " ";
       modalContainer.classList.add("showModal");
       const idCard = parseInt(cardNew.dataset.character);
-      let character = getCharacter(data, idCard);
+      let character = getCharacter(idCard);
       let characterInfo = character["info"];
       let characterImg = character["image"];
       let exitButton = document.createElement("button");
