@@ -225,7 +225,7 @@ nav {
 .btn-delete {
   /*boton personajes*/
   height: 2.7rem;
-  width: 8rem;
+  width: 10rem;
   font-size: 1.5rem;
   font-family: "Ravi Prakash", cursive;
   background-color: transparent;
@@ -463,14 +463,13 @@ nav {
     width: 3rem;
     height: auto;
   }
-  /* .filter-character {
+  .filter-character {
     flex-direction: row;
     align-items: flex-start;
-  } */
-  /* .filter-list {
+  } 
+  .filter-list {
     border-bottom: transparent solid 1px;
-  } */
-
+  }
   .category{
     width: 80%;
   }

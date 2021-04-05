@@ -125,5 +125,8 @@ DeleteBtn.addEventListener("click", () => {
   orderData(data.results);
 });
 
+displayList(data.results, listElement, numberCard, currentPage);
+setPagination(data.results, paginationElement, numberCard);
+orderData(data.results);
 search();
 drawSort();
