@@ -7,7 +7,6 @@ export const searchByName = (data, input) => {
     if (element.name.toLowerCase().includes(input))
       characterFound.push(element);
   });
-  console.log(characterFound);
   return characterFound;
 };
 

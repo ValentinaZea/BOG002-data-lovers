@@ -82,36 +82,43 @@ listMenu.addEventListener("click", (event) => {
 
 //llenar listas  filtros
 sectionCharacter.addEventListener("click", (event) => {
-    if (event.target.classList.contains("category")) {
+  if (event.target.classList.contains("category")) {
     const categorySelected = event.target.id;
     getListFilters(categorySelected);
   }
 });
 
-// filtrar  personajes - cambio de estado  de botones 
+// filtrar  personajes - cambio de estado  de botones
 sectionCharacter.addEventListener("click", (event) => {
   if (event.target.classList.contains("btn-filter")) {
-    const othersButtons = document.querySelectorAll(".btn-filter");
     const { id, value } = event.target.dataset;
     filters[id] = value;
-    othersButtons.forEach((element) => {
-      const { id: idByElement, value: valueByElement } = element.dataset;
-      if (filters[idByElement] === valueByElement) {
-        element.classList.remove("inactive");
-        element.classList.add("active");
-      } else {
-        element.classList.remove("active");
-        element.classList.add("inactive");
-      }
-    });
     const filterData = filterDataCategories(data.results, filters);
     setPagination(filterData, paginationElement, numberCard);
     displayList(filterData, listElement, numberCard, currentPage);
     orderData(filterData);
+    statusButton();
   }
 });
 
-//limpiar filtros - todos los personajes 
+//pintar los botones del filtro
+function statusButton() {
+  const othersButtons = document.querySelectorAll(".btn-filter");
+  othersButtons.forEach((element) => {
+    const idByElement = element.dataset.id;
+    const valueByElement = element.dataset.value;
+    // const { id: idByElement, value: valueByElement } = element.dataset;
+    if (filters[idByElement] === valueByElement) {
+      element.classList.remove("inactive");
+      element.classList.add("active");
+    } else {
+      element.classList.remove("active");
+      element.classList.add("inactive");
+    }
+  });
+}
+
+//limpiar filtros - todos los personajes
 DeleteBtn.addEventListener("click", () => {
   filters = {};
   let btnFilter = document.querySelectorAll(".btn-filter");
