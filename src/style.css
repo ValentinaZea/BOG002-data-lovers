@@ -468,7 +468,7 @@ nav {
     justify-content: flex-end;
   }
   .container-sort {
-    width: 50%;
+    width: 40%;
     align-items: center;
     justify-content: center;
   }
@@ -493,7 +493,7 @@ nav {
 
   .container-filter-wrapper {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: start;
     margin-top: 1rem;
     width: 100%;
@@ -504,8 +504,8 @@ nav {
   }
 
   .wrapper {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: min-content;
-    width: 60%;
+    width: 70%;
   }
 }
