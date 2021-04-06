@@ -27,6 +27,9 @@ footer {
   font-family: "Indie Flower", cursive;
   flex-shrink: 0;
 }
+.hidden-section {
+  display: none;
+}
 
 /*Barra de navegacion*/
 nav {
@@ -80,47 +83,14 @@ nav {
   transform: translateX(0);
 }
 
-/*tarjetas personajes*/
-.name-card {
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.image-card {
+/*filtros*/
+.container-filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
   width: 100%;
 }
-
-.card {
-  font-family: "Ravi Prakash", cursive;
-  background-color: #16acc9;
-  border: solid 0.3em #d2da4b;
-  border-radius: 0.3rem;
-  cursor: pointer;
-}
-
-.card:hover {
-  filter: drop-shadow(0 0 0.95rem #16acc9);
-}
-
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  width: 80%;
-  margin: 2rem auto;
-  grid-gap: 1rem;
-}
-
-.hidden-card {
-  visibility: hidden;
-  opacity: 0;
-  order: 1;
-}
-
-.hidden-section {
-  display: none;
-}
-
-/*filtros*/
 .filter-character {
   display: flex;
   align-items: center;
@@ -131,7 +101,8 @@ nav {
   text-align: center;
   font-family: "Ravi Prakash", cursive;
   font-size: 1.5rem;
-  margin-top: 1rem;
+  width: 80%;
+  margin-bottom: 1rem
 }
 
 .filter-list {
@@ -174,6 +145,40 @@ nav {
   width: 85%;
 }
 
+/*tarjetas personajes*/
+.name-card {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.image-card {
+  width: 100%;
+}
+
+.card {
+  font-family: "Ravi Prakash", cursive;
+  background-color: #16acc9;
+  border: solid 0.3em #d2da4b;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.card:hover {
+  filter: drop-shadow(0 0 0.95rem #16acc9);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 80%;
+  grid-gap: 1rem;
+}
+
+.hidden-card {
+  visibility: hidden;
+  opacity: 0;
+  order: 1;
+}
 /*paginacion*/
 .pagenumbers {
   width: 80%;
@@ -422,10 +427,6 @@ nav {
     display: none;
   }
 
-  .wrapper {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
   /*modal*/
   .modal-container {
     display: flex;
@@ -453,7 +454,7 @@ nav {
   }
 
   .character-list {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .container-bar-sort {
@@ -477,15 +478,34 @@ nav {
     height: auto;
     padding: 0.2rem;
   }
+ 
+  .category {
+    width: 80%;
+    margin-bottom: 1rem;
+    margin-top: 1px solid white;
+    border-top: 1px solid white;
+  }
 
   .filter-character {
-    flex-direction: row;
-    align-items: flex-start;
-  } 
-  .filter-list {
-    border-bottom: transparent solid 1px;
+    flex-direction: column;
+    width: 15%;
   }
-  .category{
-    width: 80%;
+
+  .container-filter-wrapper {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: start;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .filter-list {
+    flex-direction: column;
+  }
+
+  .wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: min-content;
+    width: 60%;
   }
 }
